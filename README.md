@@ -1,6 +1,7 @@
-# Em::Mount
+# EM::Mount
 
-TODO: Write a gem description
+`EM::Mount` provides a simple abstraction to the `mount` system
+command for eventmachine.
 
 ## Installation
 
