@@ -4,8 +4,8 @@ require File.expand_path('../lib/em-mount/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Arthur Andersen"]
   gem.email         = ["leoc.git@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Eventmachine interface of the linux mount command}
+  gem.summary       = %q{Eventmachine interface of the linux mount command}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
@@ -13,5 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "em-mount"
   gem.require_paths = ["lib"]
-  gem.version       = Em::Mount::VERSION
+  gem.version       = EventMachine::Mount::VERSION
+
+  gem.add_dependency 'em-systemcommand'
 end
