@@ -19,9 +19,9 @@ module EventMachine
 
       proc = block ? block : @execution_proc
 
-      EM::SystemCommand.execute "sudo mkdir #{@path}" do |on|
+      EM::SystemCommand.execute "mkdir #{@path}" do |on|
         on.success do
-          command = ['sudo mount', @target, @path]
+          command = ['mount', @target, @path]
           unless options.empty?
             options_arg = @options.map{ |k,v| "#{k}=#{v}" }.join(',')
             command << "-o #{options_arg}"
@@ -36,7 +36,7 @@ module EventMachine
 
     def unmount &block
       return unless @mounted
-      cmd = EM::SystemCommand.execute 'sudo umount', @path
+      cmd = EM::SystemCommand.execute 'umount', @path
       cmd.success do
         @mounted = false
         delete_mount_folder(&block)
@@ -47,7 +47,7 @@ module EventMachine
     end
 
     def delete_mount_folder(&block)
-      EM::SystemCommand.execute 'sudo rmdir', @path do |on|
+      EM::SystemCommand.execute 'rmdir', @path do |on|
         on.success do
           block.call if block
         end
