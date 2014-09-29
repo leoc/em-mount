@@ -23,7 +23,7 @@ module EventMachine
         on.success do
           command = ['mount', @target, @path]
           unless options.empty?
-            options_arg = @options.map{ |k,v| "#{k}=#{v}" }.join(',')
+            options_arg = @options.map{ |k,v| v == true ? k : "#{k}=#{v}" }.join(',')
             command << "-o #{options_arg}"
           end
           cmd = EM::SystemCommand.execute *command, &proc
